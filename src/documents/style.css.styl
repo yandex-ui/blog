@@ -1,0 +1,47 @@
+use('../../node_modules/stylobuild', {
+  csso: false
+})
+
+rem = 10px
+$init_islands_root = true
+@require "../../node_modules/stylobate-islands/lib/standalone"
+
+html,
+body
+  overflow: hidden
+
+// Move to skin params
+$app-head = 7*$islands_s
+$app-sidebar = 16*$islands_l
+
+skin-islands-app()
+  kind: fill
+
+skin-islands-app-head($this)
+  kind: fill top
+  global_skin: islands-isle
+
+  height: $app-head
+  // why is nothing renders here?
+  // p($this.parent.arguments)
+
+skin-islands-app-sidebar($this)
+  kind: fill right \
+    ($app-head + $islands_l) 0 $islands_l
+
+  global_skin: islands-isle
+
+  width: $app-sidebar
+
+skin-islands-app-content($this)
+  kind: fill \
+    ($app-head + $islands_l) ($app-sidebar + $islands_l) $islands_l $islands_l
+
+  global_skin: islands-isle
+
+.page
+  skin: app \
+    (-head '&-head') \
+    (-sidebar '&-sidebar') \
+    (-content '&-content')
+

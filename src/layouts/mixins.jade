@@ -1,0 +1,21 @@
+include ../../node_modules/bemto.jade/bemto
+- bemto_settings_element = '-'
+
+mixin page-body()
+  body
+    block
+
+mixin page-head()
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=EmulateIE7,IE=edge")
+    meta(name="viewport", content="width=device-width")
+
+    //- Including docpad's stuff
+    != getBlock("meta").toHTML()
+    != getBlock('scripts').toHTML()
+    != getBlock("styles").toHTML()
+    link(rel="stylesheet", href="style.css")
+
+    block
+
