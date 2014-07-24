@@ -21,8 +21,10 @@ docpadConfig = {
                     newUrl = newUrl.replace(dateMatch[1] + '-', '')
                     newOutPath = newOutPath.replace(dateMatch[1] + '-', '')
 
-                newUrl = newUrl.replace('.html', '/')
-                newOutPath = newOutPath.replace('.html', '/index.html')
+                if newUrl.indexOf('index.html') == -1
+                    newUrl = newUrl.replace('.html', '/')
+                    newOutPath = newOutPath.replace('.html', '/index.html')
+
                 page
                     .set('outPath', newOutPath)
                     .setUrl(newUrl)

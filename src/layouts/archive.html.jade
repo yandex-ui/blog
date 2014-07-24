@@ -4,7 +4,8 @@ include mixins
   +page-head
   +page-body
     +b.page
-      +e('h1').head Архив клуба разработки интерфейсов
+      +e('h1').head
+        a(href='../') Архив клуба по разработке интерфейсов
       +e.content
         header
           h1= document.title
@@ -12,6 +13,5 @@ include mixins
             = "Опубликовано " + document.date + ". "
             if document.author
               = "Автор: " + document.author + "."
-
 
         != content
