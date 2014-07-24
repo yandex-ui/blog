@@ -1,6 +1,4 @@
-use('../../node_modules/stylobuild', {
-  csso: false
-})
+use('../../node_modules/stylobuild')
 
 rem = 10px
 $init_islands_root = true
@@ -8,40 +6,72 @@ $init_islands_root = true
 
 html,
 body
-  overflow: hidden
-
-// Move to skin params
-$app-head = 7*$islands_s
-$app-sidebar = 16*$islands_l
-
-skin-islands-app()
-  kind: fill
-
-skin-islands-app-head($this)
-  kind: fill top
-  global_skin: islands-isle
-
-  height: $app-head
-  // why is nothing renders here?
-  // p($this.parent.arguments)
-
-skin-islands-app-sidebar($this)
-  kind: fill right \
-    ($app-head + $islands_l) 0 $islands_l
-
-  global_skin: islands-isle
-
-  width: $app-sidebar
-
-skin-islands-app-content($this)
-  kind: fill \
-    ($app-head + $islands_l) ($app-sidebar + $islands_l) $islands_l $islands_l
-
-  global_skin: islands-isle
+  margin: 0
+  padding: 0
 
 .page
-  skin: app \
-    (-head '&-head') \
-    (-sidebar '&-sidebar') \
-    (-content '&-content')
+  &-head
+    skin: isle
+    skin: h1
 
+    text-align: center
+
+    height: 7*$islands_s
+    padding: 0 $islands_l
+    line-height: @height
+    margin: 0 0 $islands_l
+
+  &-content
+    skin: isle
+    kind: content $islands_s $islands_l
+    max-width: 42em
+    margin: 0 auto
+
+    & p
+      skin: para
+
+    & > header > p
+      skin: para2
+      color: $islands_color_text_misc
+
+    & > header,
+    & > h2,
+    & > h3,
+    & > h4,
+    & > h5
+      & + p > img
+        float: right
+        padding: 0 0 0.5em 1em
+
+    & h1
+      skin: h2
+
+    & h2
+      skin: h3
+
+    & h3
+      skin: h4
+
+      & > a > img
+        margin-right: 4px
+
+    & h4
+      skin: h5
+
+    & code
+      font: 93.33%/1.5em Consolas, Monaco, monospace
+
+    & pre
+      font: 1em/1 serif
+
+      & code
+        display: block
+
+        padding:0 3px
+        border:1px solid rgba(0,0,0,.2)
+
+        background:rgba(164,164,164,.2)
+
+    & a > sup
+      font: 11px/1 Verdana,sans-serif
+      margin: 0 0 0 3px

@@ -1,0 +1,17 @@
+include mixins
+
++b('html')
+  +page-head
+  +page-body
+    +b.page
+      +e('h1').head Архив клуба разработки интерфейсов
+      +e.content
+        header
+          h1= document.title
+          p
+            = "Опубликовано " + document.date + ". "
+            if document.author
+              = "Автор: " + document.author + "."
+
+
+        != content

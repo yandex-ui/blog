@@ -3,7 +3,7 @@ include mixins
 +b('html')
   +page-head
   +page-body
-    != content
-
-
-//- != content
+    +b.page
+      +e('h1').head Возможно, когда-нибудь здесь будет блог
+      +e.content
+        != content
