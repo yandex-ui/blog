@@ -1,0 +1,83 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=edge"><meta name="viewport" content="width=device-width"><meta name="generator" content="DocPad v6.65.0" /><link rel="stylesheet" href="/style.css"></head><body><div class="page"><h1 class="page-head">Архив клуба разработки интерфейсов</h1><div class="page-content"><header><h1>Как определить наличие FlashBlock в браузере</h1><p>Опубликовано Thu Jul 24 2014 15:00:19 GMT+0400 (MSK). Автор: Алексей Андросов.</p></header><p>При вставке флеш-ролика мы, как правило, пользуемся <a href="http://code.google.com/p/swfobject/">swfobject</a>. С помощью этого скрипта можно не только правильно вставить на сайт флеш-ролик с учетом браузера, но и определить наличие и версию флеш-плеера. Последнее нужно для того, чтобы интерфейс сайта показывал пользователю уведомление о том, что у него нет флеш-плеера или он устарел.</p>
+<p>И все же сейчас этого не достаточно, так как флеш-плеер может быть установлен, но заблокирован flashblock-расширениями. Эти ситуации надо тоже определять и, в зависимости от роли флеш-объекта, либо показывать уведомление, либо автоматически изменять интерфейс (например, если флеш используется в качестве транспорта, то можно деградировать на безфлешевую версию).</p>
+<p>Для этих целей был написан <a href="https://github.com/doochik/FlashBlockNotifier">FlashBlockNotifier</a>. Это обертка для метода <code>swfobject.embedSWF</code>, которая после вставки флеш-объекта проверяет, не заблокирован ли он. Синтаксис функции <code>FlashBlockNotifier.embedSWF</code> идентичен синтаксису <code>swfobject.embedSWF</code>.</p>
+<h2 id="-">Пример использования</h2>
+<p>Чтобы обработать наличие flashblock, надо в callback-фукнции <code>FlashBlockNotifier.embedSWF</code> проверять свойства <code>success</code> и <code>__fbn</code>.</p>
+<p><code>success</code> — стандартное свойство swfobject, означающее удалось ли вставить флеш-объект на страницу. Оно будет равно <code>true</code>, если в браузере установлен флеш-плеер необходимой версии и ролик не заблокирован. Во всех остальных случаях будет <code>false</code>.</p>
+<p><code>__fbn</code> — свойство, добавляемое FlashBlockNotifier и означающее, что вставка флеш-объекта не удалась из-за flashblock.</p>
+<pre><code>&lt;script src=&quot;//yandex.st/swfobject/2.2/swfobject.min.js&quot;&gt;
+&lt;script src=&quot;FlashBlockNotifier.js&quot;&gt;
+&lt;p&gt;
+    &lt;span id=&quot;result&quot; style=&quot;padding: 5px;&quot;&gt;
+        &lt;span&gt;Result:
+        &lt;span id=&quot;result_text&quot;&gt;
+    &lt;/span&gt;
+&lt;/p&gt;
+&lt;div id=&quot;flash_is_here&quot; style=&quot;width:425px;height:356px;&quot;&gt;
+&lt;script&gt;
+    FlashBlockNotifier.embedSWF(
+            &#39;http://www.youtube.com/v/rctdMX_qlMw?enablejsapi=1&amp;playerapiid=ytplayer&#39;,
+            &#39;flash_is_here&#39;,
+            425,
+            356,
+            &#39;8.0.0&#39;,
+            null,
+            null,
+            { allowScriptAccess: &quot;always&quot; },
+            { id: &quot;myytplayer&quot; },
+            function(e) {
+                var res = &#39;&#39;;
+                var color = &#39;&#39;;
+                if (e.success) {
+                    res = &#39;no FlashBlock&#39;;
+                    color = &#39;#BFB&#39;;
+
+                } else if (!e.success &amp;&amp; e.__fbn) {
+                    res = &#39;FlashBlock detected&#39;;
+                    color = &#39;#BBF&#39;;
+
+                } else {
+                    res = &#39;Flash is not installed&#39;;
+                    color = &#39;#FBB&#39;;
+                }
+                document.getElementById(&#39;result_text&#39;).innerHTML = res;
+                document.getElementById(&#39;result&#39;).style.background = color;
+            }
+    );
+&lt;/script&gt;
+</code></pre><p><a href="http://doochik.github.com/FlashBlockNotifier/">Попробовать пример</a></p>
+<h2 id="-">Как это работает?</h2>
+<p>Все расширения работают по схожим принципам: видоизменяют вставленный тег <code>&lt;object&gt;</code> или оборачивают его. Поэтому, чтобы определить блокировку флеша, надо после вставки проверить, работает ли вставленный флеш-ролик. В разных браузерах это происходит по разному.</p>
+<ul>
+<li><p>В Opera 11.5 появилась настройка «Включать плагины только по запросу». Opera заменяет флеш на svg-рисунок, при этом сама нода никак не меняется, за исключением маленького момента: у нее есть функция <code>getSVGDocument</code>, и она возвращает не-null значение. Эту проверку можно делать сразу после вставки флеш-ролика.</p>
+<pre><code>  if (swfNode &amp;&amp; swfNode[&#39;getSVGDocument&#39;] &amp;&amp; swfNode[&#39;getSVGDocument&#39;]()) {
+      // Opera flashblock detected
+  }
+</code></pre></li>
+</ul>
+<p>Чтобы правильно определить flashblock в браузерах Chrome, Firefox и Safari, надо сделать две вещи:</p>
+<ol>
+<li>Обернуть будущий объект с flash в пустой <code>div</code> (FlashBlockNotifier сделает это автоматически). Это нужно, так как некоторые плагины скрывают исходный флеш, а рядом с ним создают новый элемент.</li>
+<li>После вставки сделать таймаут, чтобы дать возможность отработать расширению.</li>
+</ol>
+<p>Рассмотрим, как они работают:</p>
+<ul>
+<li><p><a href="https://addons.mozilla.org/ru/firefox/addon/flashblock/">Firefox FlashBlock</a> и <a href="https://chrome.google.com/webstore/detail/ebmieckllmmifjjbipnppinpiohpfahm">Chrome FlashFree</a> заменяют тег <code>&lt;object&gt;</code> на свою собственную обертку и удаляют его из DOM-дерева, поэтому его можно легко определить, проверив значение <code>parentNode</code></p>
+<pre><code>  if (!swfNode.parentNode) {
+      // flashblock
+  }
+</code></pre></li>
+<li><p><a href="https://chrome.google.com/webstore/detail/cdngiadmnkhgemkimkhiilgffbjijcie">Chome FlashBlock от Lex1</a> и <a href="https://chrome.google.com/webstore/detail/gofhjkjmkpinhpoiabjplobcaignabnl">Chome FlashBlock от josorek</a> создают рядом с флеш свои элементы, поэтому они определяются по изменению числа детей у <code>div</code>-обертки</p>
+<pre><code>  if (wrapperNode.childNodes.length &gt; 1) {
+    //flashblock
+  }
+</code></pre></li>
+<li><p><a href="http://hoyois.github.com/safariextensions/clicktoplugin/">Safari ClickToFlash</a> оборачивает флеш в свою обертку, ее можно определить по классу <code>CTFnodisplay</code></p>
+<pre><code>  if (swfNode.parentNode.className.indexOf(&#39;CTFnodisplay&#39;) &gt; -1) {
+    // safari flashblock
+  }
+</code></pre></li>
+</ul>
+<h2 id="-fork-us-on-github-">“Fork us on GitHub”</h2>
+<p>FlashBlockNotifier распространяется под свободными лицензиями GPL и MIT. Посмотреть или скачать код с комментариями можно <a href="https://github.com/doochik/FlashBlockNotifier">в репозитории проекта на Гитхабе</a>.</p>
+</div></div><!-- Yandex.Metrika counter --><div style="display:none;"><script type="text/javascript">(function(w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter8530063 = new Ya.Metrika({id:8530063, enableAll: true}); } catch(e) { } }); })(window, "yandex_metrika_callbacks");</script></div><script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script><noscript><div><img src="//mc.yandex.ru/watch/8530063" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter --></body></html>

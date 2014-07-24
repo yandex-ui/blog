@@ -1,0 +1,40 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=edge"><meta name="viewport" content="width=device-width"><meta name="generator" content="DocPad v6.65.0" /><link rel="stylesheet" href="/style.css"></head><body><div class="page"><h1 class="page-head">Архив клуба разработки интерфейсов</h1><div class="page-content"><header><h1>Подборка ссылок, выпуск третий</h1><p>Опубликовано Thu Jul 24 2014 14:22:34 GMT+0400 (MSK). </p></header><h2 id="-">Вёрстка</h2>
+<ul>
+<li><h3 id="-unquoted-font-family-names-in-css-http-mathiasbynens-be-notes-unquoted-font-family-"><a href="http://mathiasbynens.be/notes/unquoted-font-family">Unquoted font family names in CSS</a></h3>
+<p>  <a href="https://twitter.com/mathias">Mathias Bynens</a> написал хорошую заметку про то, когда нужны кавычки у значений свойства <code>font-family</code>. Автор подробно рассматривает различные варианты и, ссылаясь на спецификации, объясняет почему, например, <code>sans-serif</code> и <code>&#39;sans-serif&#39;</code> — не одно и то же.</p>
+</li>
+<li><h3 id="-animated-mask-icons-http-simurai-com-post-20732728563-animated-mask-icons-"><a href="http://simurai.com/post/20732728563/animated-mask-icons">Animated mask icons</a></h3>
+<p>  <a href="https://twitter.com/simurai">Simurai</a> сделал <a href="http://lab.simurai.com/icons/">небольшую демонстрацию</a> использования CSS-масок — проприетарного для WebKit свойства, которое пока не описано в спецификациях. Хотя практической ценности этот эксперимент не имеет, это хороший взгяд в будущее — с использованием масок можно делать довольно много интересных эффектов, в частности, если посмотреть этот эксперимент в последних сборках WebKit, то можно увидеть, как к ним применяются CSS-фильтры.</p>
+</li>
+<li><h3 id="-media-query-asset-downloading-results-http-timkadlec-com-2012-04-media-query-asset-downloading-results-"><a href="http://timkadlec.com/2012/04/media-query-asset-downloading-results/">Media Query &amp; Asset Downloading Results</a></h3>
+<p>  <a href="https://twitter.com/tkadlec">Tim Kadlec</a> провёл интересное исследование того, как нужно скрывать изображения, чтобы браузеры не посылали к ним запросы. Это особенно актуально для адаптивных раскладок — когда может возникнуть желание показывать разные изображения для разных устройств.</p>
+</li>
+<li><h3 id="-alternative-units-for-css3-rotation-transforms-http-www-impressivewebs-com-alternative-units-css3-rotate-transforms-"><a href="http://www.impressivewebs.com/alternative-units-css3-rotate-transforms/">Alternative Units for CSS3 Rotation Transforms</a></h3>
+<p>  <a href="https://twitter.com/ImpressiveWebs">Louis Lazaris</a> написал небольшую заметку, описывающую альтернативные единицы измерения углов для CSS-трансформаций.</p>
+</li>
+<li><h3 id="-cross-browser-drop-caps-with-css-http-www-iandevlin-com-blog-2012-04-css-cross-browser-drop-caps-with-css-"><a href="http://www.iandevlin.com/blog/2012/04/css/cross-browser-drop-caps-with-css">Cross browser drop caps with CSS</a></h3>
+<p>  <a href="https://twitter.com/iandevlin">Ian Devlin</a> поделился рецептом создания эффекта буквицы при помощи псевдоэлемента <code>:first-letter</code>. У этого псевдоэлемента до сих пор есть множество особенностей отображения в разных браузерах, но автор показывает, как можно их обойти и достичь почти одинакового отображения буквицы во всех браузерах.</p>
+</li>
+</ul>
+<h2 id="-">Дизайн</h2>
+<ul>
+<li><h3 id="-mobile-navigation-design-tutorial-http-webdesignerwall-com-tutorials-mobile-navigation-design-tutorial-"><a href="http://webdesignerwall.com/tutorials/mobile-navigation-design-tutorial">Mobile Navigation Design &amp; Tutorial</a></h3>
+<p>  В этой статье <a href="https://twitter.com/nickla">Nick La</a> описывает различные варианты того, как можно изменять навигацию на страницах в рамках адаптивной раскладки. Автор перечисляет несколько стандартных способов улучшения навигации для мобильных устройств, а затем подробно расписывает один из вариантов.</p>
+</li>
+<li><h3 id="-responsive-layouts-responsively-wireframed-http-www-thismanslife-co-uk-projects-lab-responsivewireframes-"><a href="http://www.thismanslife.co.uk/projects/lab/responsivewireframes/">Responsive Layouts, Responsively Wireframed</a></h3>
+<p>  <a href="https://twitter.com/thismanslife">James Mellers</a> сделал страницу с демонстрацией того, как могут работать адаптивные раскладки. Кроме этого, автор ставит проблему отсутствия инструмента прототипирования адаптивных раскладок.</p>
+</li>
+</ul>
+<h2 id="-">Остальное</h2>
+<ul>
+<li><h3 id="-zxcvbn-realistic-password-strength-estimation-http-tech-dropbox-com-p-165-"><a href="http://tech.dropbox.com/?p=165">zxcvbn: realistic password strength estimation</a></h3>
+<p>  В <a href="http://tech.dropbox.com/">техническом блоге</a> компании <a href="https://twitter.com/Dropbox">Dropbox</a> можно прочитать довольно подробное описание алгоритма проверки паролей на сложность. Для этого в компании создали открытый инструмент, который можно <a href="https://github.com/lowe/zxcvbn">найти на Гитхабе</a>. Инструмент в действии можно посмотреть на <a href="http://dl.dropbox.com/u/209/zxcvbn/test/index.html">демонстрационной странице</a> — там можно проверить различные пароли на сложность и увидеть подробный разбор введённого пароля с точки зрения алгоритма.</p>
+</li>
+<li><h3 id="-licensing-for-javascript-projects-http-dailyjs-com-2012-04-09-licenses-"><a href="http://dailyjs.com/2012/04/09/licenses/">Licensing for JavaScript Projects</a></h3>
+<p>  <a href="https://twitter.com/alex_young">Alex R Young</a> написал немного про лицензирование JavaScript-проектов: как и зачем нужно предоставлять лицензию для своего открытого проекта.</p>
+</li>
+<li><h3 id="-new-tricks-in-xmlhttprequest2-http-www-html5rocks-com-en-tutorials-file-xhr2-"><a href="http://www.html5rocks.com/en/tutorials/file/xhr2/">New tricks in XMLHttpRequest2</a></h3>
+<p>  <a href="https://twitter.com/ebidel">Eric Bidelman</a> подробно расписал новшества <a href="http://dev.w3.org/2006/webapi/XMLHttpRequest-2/">новой спецификации XHR</a>. Автор рассказывает про получение и отправку данных, про CORS и приводит несколько практических примеров.</p>
+</li>
+</ul>
+</div></div><!-- Yandex.Metrika counter --><div style="display:none;"><script type="text/javascript">(function(w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter8530063 = new Ya.Metrika({id:8530063, enableAll: true}); } catch(e) { } }); })(window, "yandex_metrika_callbacks");</script></div><script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script><noscript><div><img src="//mc.yandex.ru/watch/8530063" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter --></body></html>

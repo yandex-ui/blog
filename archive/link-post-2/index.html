@@ -1,0 +1,47 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7,IE=edge"><meta name="viewport" content="width=device-width"><meta name="generator" content="DocPad v6.65.0" /><link rel="stylesheet" href="/style.css"></head><body><div class="page"><h1 class="page-head">Архив клуба разработки интерфейсов</h1><div class="page-content"><header><h1>Подборка ссылок, выпуск второй</h1><p>Опубликовано Thu Jul 24 2014 14:22:29 GMT+0400 (MSK). </p></header><h2 id="-">Вёрстка</h2>
+<ul>
+<li><h3 id="-svg-stacks-http-simurai-com-post-20251013889-svg-stacks-"><a href="http://simurai.com/post/20251013889/svg-stacks">SVG Stacks</a></h3>
+<p>  SVG можно назвать одной из самых недооценённых технологий в веб-разработке. Однако, в последнее время разработчики начинают уделять ей внимание.</p>
+<p>  <a href="https://twitter.com/simurai">Simurai</a> написал про SVG-стеки — технологию, которую можно будет использовать в будущем вместо спрайтов. SVG-стеки представляют из себя набор скрытых по умолчанию картинок, которые можно показывать, используя CSS для SVG и псевдокласс <code>:target</code>. <a href="https://twitter.com/erikdahlstrom">Erik Dahlström</a> исследовал этот вопрос: оказалось, что на текущий момент SVG-cтеки нельзя использовать в CSS-фонах — <code>:target</code> для них работает только в Firefox, однако, если применять SVG-стеки в HTML, то можно добиться большей кроссбраузерности. Эрик сделал <a href="http://jsfiddle.net/24DNn/5/">пример</a>, на котором можно посмотреть SVG-стеки в действии, в HTML-варианте.</p>
+</li>
+</ul>
+<ul>
+<li><h3 id="-svg-use-it-already-http-dbushell-com-2012-04-03-svg-use-it-already-"><a href="http://dbushell.com/2012/04/03/svg-use-it-already/">SVG, Use it Already</a></h3>
+<p>  <a href="https://twitter.com/dbushell/">David Bushell</a> написал короткую статью про то, что SVG можно использовать уже сейчас, особенно если поддерживать деградацию с него на обычные изображения используя, например, <a href="http://modernizr.com/">Modernizr</a>.</p>
+</li>
+<li><h3 id="-new-working-drafts-of-css-transitions-and-css-animations-http-www-w3-org-blog-css-2012-04-03-new-working-drafts-of-css-transitions-and-css-animations-"><a href="http://www.w3.org/blog/CSS/2012/04/03/new-working-drafts-of-css-transitions-and-css-animations/">New Working Drafts of CSS Transitions and CSS Animations</a></h3>
+<p>  <a href="https://twitter.com/davidbaron">David Baron</a> в <a href="http://www.w3.org/blog/CSS/">CSS-блоге w3.org</a> написал пост про новые наброски спецификаций транзишнов и анимаций. Изменений довольно много, например, для временных функций через <code>cubic-beizer()</code> «узаконили» значения за пределами отрезка от ноля до единицы. Вообще, модуль транзишнов уже довольно близок к «чистовику», там осталось совсем немного моментов, которые надо подправить, так что можно надеяться, что уже в ближайшем будущем мы сможем использовать больше свойств CSS3 без префиксов.</p>
+</li>
+<li><h3 id="-bringing-blending-to-the-web-http-blogs-adobe-com-webplatform-2012-04-04-bringing-blending-to-the-web-"><a href="http://blogs.adobe.com/webplatform/2012/04/04/bringing-blending-to-the-web/">Bringing blending to the Web</a></h3>
+<p>  <a href="https://twitter.com/rcabanier">Rik Cabanier</a> из команды Web Platform компании Adobe написал чуть подробнее про <a href="https://dvcs.w3.org/hg/FXTF/rawfile/4b53107dd95d/compositing/index.html">набросок спецификации</a> режимов смешивания цветов в CSS, который появился благодаря проведённому недавно в компании Adobe хакатону.</p>
+</li>
+<li><h3 id="-styledocco-http-jacobrask-github-com-styledocco-"><a href="http://jacobrask.github.com/styledocco/">StyleDocco</a></h3>
+<p>  <a href="https://twitter.com/jacobrask">Jacob Rask</a> представил свой инструмент под названием StyleDocco — генератор документации из CSS файлов на основе специально размеченных комментариев. Посмотреть на то, что получается в результате, можно либо на <a href="http://jacobrask.github.com/styledocco/html/resources-docs.html">примере CSS страницы самого StyleDocco</a>, либо на <a href="http://jacobrask.github.com/styledocco/examples/bootstrap/docs/html/less-buttons.html">примере с чуть подправленным кодом кнопок из Twitter Bootstrap</a>.</p>
+</li>
+</ul>
+<h2 id="javascript">JavaScript</h2>
+<ul>
+<li><h3 id="-the-ux-of-language-http-alexsexton-com-blog-2012-03-the-ux-of-language-"><a href="http://alexsexton.com/blog/2012/03/the-ux-of-language/">The UX of Language</a></h3>
+<p>  <a href="https://twitter.com/SlexAxton">Alex Sexton</a> затронул тему склонения и локализации в интерфейсах, рассмотрев несколько вариантов того, как это можно сделать. Для этого можно использовать различные спецификации — Gettext, PluralFormat, SelectFormat и NumberFormat. Также автор написал несколько небольших библиотек на JS, использующих эти спецификации для локализации и очеловечивания сообщений в интерфейсах.</p>
+<p>  Локализация и правильное составление сообщений — довольно интересная тема, на w3.org есть <a href="http://www.w3.org/International/articlelist#cultural">раздел, посвящённый ей</a>.</p>
+</li>
+<li><h3 id="-unleash-the-power-of-html-5-canvas-for-gaming-http-blogs-msdn-com-b-eternalcoding-archive-2012-03-22-unleash-the-power-of-html-5-canvas-for-gaming-part-1-aspx-ru-http-habrahabr-ru-company-microsoft-blog-141482-post_141482-"><a href="http://blogs.msdn.com/b/eternalcoding/archive/2012/03/22/unleash-the-power-of-html-5-canvas-for-gaming-part-1.aspx">Unleash the power of HTML 5 Canvas for gaming</a>, <a href="http://habrahabr.ru/company/microsoft/blog/141482/#post_141482"><img src="//yandex.st/lego/_/eR1Fu5ebSTVh2d-3fhpfIIjjp4g.png" alt="ru">перевод на русский</a></h3>
+<p>  <a href="https://twitter.com/deltakosh">David Catuhe</a> из Microsoft расписал по шагам процесс оптимизации работы с Canvas, указав на узкие места, которые могут сильно влиять на итоговый fps анимации.</p>
+</li>
+<li><h3 id="-cache-them-if-you-can-http-www-stevesouders-com-blog-2012-03-22-cache-them-if-you-can-"><a href="http://www.stevesouders.com/blog/2012/03/22/cache-them-if-you-can/">Cache them if you can</a></h3>
+<p>  <a href="https://twitter.com/souders/">Steve Souders</a> написал ещё раз про кэш, на этот раз про заголовок <code>max-age</code>. Вообще, автор написал довольно много статей про кэширование, в начале статьи по ссылке приводится их список.</p>
+</li>
+</ul>
+<h2 id="-">Дизайн</h2>
+<ul>
+<li><h3 id="-responsive-web-design-missing-the-point-http-bradfrostweb-com-blog-web-responsive-web-design-missing-the-point-"><a href="http://bradfrostweb.com/blog/web/responsive-web-design-missing-the-point/">Responsive web design: missing the point</a></h3>
+<p>  <a href="https://twitter.com/brad_frost">Brad Frost</a> написал заметку про адаптивные раскладки, отмечая, что часто их используют просто «чтобы было», не заботясь о результате. Основная критика таких раскладок появляется с оглядкой именно на подобные примеры, в которых авторы не заботятся о размере CSS, раздувая код добавлением огромного числа медиакверей. Тогда как основной смысл адаптивных раскладок — сделать сайт более дружелюбным к пользователю, посетившему его с мобильного устройства. Пользователям не важно, как красиво меняются состояния адаптивной раскладки, им нужно, чтобы содержимое страниц было доступным.</p>
+</li>
+<li><h3 id="-flat-icons-icon-fonts-http-css-tricks-com-flat-icons-icon-fonts-"><a href="http://css-tricks.com/flat-icons-icon-fonts/">Flat Icons &amp; Icon Fonts</a></h3>
+<p>  <a href="https://twitter.com/chriscoyier">Chris Coyier</a> сделал хорошую подборку шрифтоиконок, как платных, так и бесплатных. Это ещё очень сырая тема, но уже есть большое количество примеров, на которые стоит посмотреть. Кроме того, начали появляться различные инструменты, с помощью которых можно попробовать самому сделать подобный шрифт с набором иконок. Их небольшой список приводится в конце статьи.</p>
+</li>
+<li><h3 id="-startups-this-is-how-design-works-http-startupsthisishowdesignworks-com-"><a href="http://startupsthisishowdesignworks.com/">Startups, this is how design works</a></h3>
+<p>  <a href="https://twitter.com/wellsriley">Wells Riley</a> сделал сайт-презентацию, описывающий основы дизайна в контексте стартапов. Хотя целевой аудиторией этого сайта являются основатели стартапов, которым автор пытается продать идею значимости дизайна, на сам сайт стоит посмотреть как на образец отличной подачи материала.</p>
+</li>
+</ul>
+</div></div><!-- Yandex.Metrika counter --><div style="display:none;"><script type="text/javascript">(function(w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter8530063 = new Ya.Metrika({id:8530063, enableAll: true}); } catch(e) { } }); })(window, "yandex_metrika_callbacks");</script></div><script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script><noscript><div><img src="//mc.yandex.ru/watch/8530063" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter --></body></html>
