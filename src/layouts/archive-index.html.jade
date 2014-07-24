@@ -1,0 +1,21 @@
+include mixins
+
++b('html')
+  +page-head
+  +page-body
+    +b.page
+      +e('h1').head Архив клуба по разработке интерфейсов
+      +e.content
+        != content
+
+      +e.content
+        ul
+          - var articles = getCollection("html").toJSON()
+          - for article in articles
+            if article.layout == 'archive'
+              li
+                - prefix = getEnvironment() == 'development' ? '' : '/blog'
+                  a(href= prefix + article.url)
+                    = article.title + ', '
+                    em= article.basename.match(/^([0-9]{4}-[0-9]{2}-[0-9]{2})-/)[1]
+
